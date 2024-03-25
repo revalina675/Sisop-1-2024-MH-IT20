@@ -28,6 +28,12 @@ d. Karena ada seseorang yang lapor kepada Cipung dan Abe bahwa pesanannya tidak 
 
 *penyelesaian*
 
+- Buat sebuah folder dengan command berikut :
+*disini saya membuat folder dengan nama SandBox*
+
+`mkdir SandBox`
+
+- Masuk ke dalam folder SandBox
 
 
 ### Soal 2
