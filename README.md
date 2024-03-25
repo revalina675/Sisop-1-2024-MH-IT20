@@ -29,9 +29,15 @@ d. Karena ada seseorang yang lapor kepada Cipung dan Abe bahwa pesanannya tidak 
 *penyelesaian*
 
 - Buat sebuah folder dengan command berikut :
+
 *disini saya membuat folder dengan nama SandBox*
 
-`mkdir SandBox`
+```bash
+mkdir SandBox
+```
+
+`mkdir` command untuk membuat directory
+`SandBox` nama directory yang ingin dibuat
 
 - Masuk ke dalam folder SandBox
 
