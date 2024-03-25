@@ -37,6 +37,7 @@ mkdir SandBox
 ```
 
 `mkdir` command untuk membuat directory
+
 `SandBox` nama directory yang ingin dibuat
 
 - Masuk ke dalam folder SandBox
