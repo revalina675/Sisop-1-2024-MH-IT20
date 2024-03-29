@@ -72,9 +72,9 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   
   j. Oppie ingin programnya tercatat dengan baik, maka buatlah agar program bisa mencatat seluruh log ke dalam folder users file auth.log, baik login ataupun register.
   
-      a) Format: [date] [type] [message]
-      b) Type: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
-      c) Ex:
+      a) **Format**: [date] [type] [message]
+      b) **Type**: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
+      c) **Ex**:
              i. [23/09/17 13:18:02] [REGISTER SUCCESS] user [username] registered successfully
             ii. [23/09/17 13:22:41] [LOGIN FAILED] ERROR Failed login attempt on user with email [email]
 
