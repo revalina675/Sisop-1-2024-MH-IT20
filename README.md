@@ -54,7 +54,6 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   c. Username yang dibuat bebas, namun email bersifat unique **setiap email yang mengandung kata admin akan dikategorikan menjadi admin** 
   
   d. Karena resep bom atom ini sangat rahasia Oppie ingin password nya memuat keamanan tingkat tinggi
-  
       a) Password tersebut harus di encrypt menggunakan base64
       b) Password yang dibuat harus lebih dari 8 karakter
       c) Harus terdapat paling sedikit 1 huruf kapital dan 1 huruf kecil
@@ -71,12 +70,13 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   i. Ketika admin ingin melakukan edit atau hapus user, maka akan keluar input email untuk identifikasi user yang akan di hapus atau di edit
   
   j. Oppie ingin programnya tercatat dengan baik, maka buatlah agar program bisa mencatat seluruh log ke dalam folder users file auth.log, baik login ataupun register.
-  
-      a) **Format**: [date] [type] [message]
-      b) **Type**: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
-      c) **Ex**:
+      a) Format: [date] [type] [message]
+      b) Type: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
+      c) Ex:
              i. [23/09/17 13:18:02] [REGISTER SUCCESS] user [username] registered successfully
             ii. [23/09/17 13:22:41] [LOGIN FAILED] ERROR Failed login attempt on user with email [email]
+
+*PENYELESAIAN*
 
 ### Soal 3
 ### Soal 4
