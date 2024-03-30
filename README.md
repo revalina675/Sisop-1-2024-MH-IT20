@@ -56,7 +56,7 @@ chmod +x Sandbox.csv
 ls -l Sandbox.csv
 ```
 
-![Gambar Contoh](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/7611c6c2-2cf0-4469-b1af-47dd6f9f6516)
+![gambar 1](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/4f77788c-b0e8-4b49-999b-68bfd826f671)
 
 - buat konfigurasi sandbox.sh sesuai yang diminta soal
 ```bash
@@ -122,7 +122,7 @@ grep -i "Adriaens .*" Sandbox.csv | awk -F ',' '{print "tanggal pembelian: " $2;
 
 `| awk -F ',' '{print "tanggal pembelian: " $2; print "banyak: " $18}` command yang menunjukkan bahwa kolom tanggal pembelian/purchase date milik Adriaens akan dicari pada kolom 2, sedangkan untuk banyak/quantity akan dicari pada kolom 18
 
---> gambar 2
+![gambar 2](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/e27761a0-ba3c-4312-84c4-9d15cd3999e0)
 
 - Mengubah konfigurasi agar menjadi executable
 ```bash
@@ -136,7 +136,7 @@ chmod +x sandbox.csv
 
 - hasil output
   
---> gambar 3
+![gambar 3](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/eee58f07-6ab5-4b5b-b6d8-a118f1fb796c)
 
 *revisi*
 Pada code awal saya menggunakan 
