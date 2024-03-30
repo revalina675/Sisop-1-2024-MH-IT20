@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fungsi yang digunakan untuk mengenkripsi password menggunaka base64
+# Fungsi yang digunakan untuk mengenkripsi password menggunakan base64
 decode_base64() 
 {
     echo "$1" | base64 --decode
@@ -14,7 +14,7 @@ check_registered_email()
     return $?
 }
 
-# Fungsi untuk mengautentikasikan user inputan
+# Fungsi untuk mengautentikasi user inputan dan menyimpannya ke auth.log
 authenticate_user() 
 {
     local email=$1
@@ -39,7 +39,7 @@ authenticate_user()
     fi
 }
 
-# Fungsi untuk menghapus password
+# Fungsi untuk reset password
 reset_password() 
 {
     local email=$1
