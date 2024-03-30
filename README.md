@@ -472,40 +472,74 @@ E. Hasil akhir:
 
 ### ! PENYELESAIAN !
 
-- Buat suatu directory
-_disini saya menggunakan directory genshin_
 ```bash
 mkdir genshin
-```
 
-- Masuk ke dalam directory tersebut
-```bash
 cd genshin
-```
 
-- download file yang diperintahkan soal
-```bash
 wget -O genshin.zip 'https://drive.google.com/uc?download=export&id=1oGHdTf4_76_RacfmQIV4i7os4sGwa9vN'
-```
 
-- unzip file yang masih dalam mode .zip
-```bash
+ls
+
 unzip genshin.zip
+
 unzip genshin_character.zip
+
+ls
+
+cd genshin_ character
+
+cd ..
+
+for encrypted_file in *.jpg; do     decrypted_filename=$(echo "$encrypted_file" | xxd -r -p);     mv "$encrypted_file" "$decrypted_filename".jpg; done
+
+while IFS=, read -r nama region elemen senjata; do
+    if [ -f "genshin_character/$nama.jpg" ]; then
+        folder="genshin_character/$region"
+        mkdir -p "$folder"  # Membuat folder region jika belum ada
+        mv "genshin_character/$nama.jpg" "$folder/$region - $nama - $elemen - $senjata.jpg"
+    fi
+done < list_character.csv
+
+awk -F',' 'BEGIN {print "Jumlah penggunaan senjata oleh karakter:"} NR > 1 {senjata[$4]++} END {for (weapon in senjata) print "Senjata:", weapon, "- Jumlah:", senjata[weapon]}' 'list_character.csv'
+
+rm genshin_character.zip genshin.zip list_character.csv
 ```
 
-- masuk ke dalam genshin_character
-```bash
-cd genshin_character
-```
+**penjelasan**
+**penjelasan**
+- mkdir genshin: Membuat direktori baru bernama "genshin".
 
-- decrypted file
-```bash
-for encrypted_file in *.jpg; do
-    decrypted_filename=$(echo "$encrypted_file" | xxd -r -p)
-    mv "$encrypted_file" "$decrypted_filename"
-done
-```
+- cd genshin: Berpindah ke direktori "genshin".
+
+- wget -O genshin.zip 'https://drive.google.com/uc?download=export&id=1oGHdTf4_76_RacfmQIV4i7os4sGwa9vN': Mengunduh file "genshin.zip" dari URL tertentu.
+  
+- ls: Menampilkan isi dari direktori saat ini.
+  
+- unzip genshin.zip: Mengekstrak isi dari file "genshin.zip".
+  
+- unzip genshin_character.zip: Mengekstrak isi dari file "genshin_character.zip".
+  
+- ls: Menampilkan isi dari direktori saat ini.
+  
+- cd genshin_character: Berpindah ke direktori "genshin_character".
+  
+- cd ..: Kembali ke direktori sebelumnya.
+  
+- for encrypted_file in *.jpg; do ... done: Melakukan iterasi pada setiap file dengan ekstensi ".jpg" dalam direktori saat ini.
+
+- while IFS=, read -r nama region elemen senjata; do ... done < list_character.csv: Membaca baris demi baris dari file "list_character.csv" dan memisahkan nilai pada setiap baris berdasarkan koma (,), kemudian menyimpannya dalam variabel yang sesuai.
+  
+- if [ -f "genshin_character/$nama.jpg" ]; then ... fi: Memeriksa apakah file dengan nama yang diberikan ada dalam direktori "genshin_character".
+folder="genshin_character/$region": Menyusun path direktori yang akan digunakan berdasarkan nilai variabel "region".
+
+- mkdir -p "$folder": Membuat direktori baru jika belum ada.
+  
+- mv "genshin_character/$nama.jpg" "$folder/$region - $nama - $elemen - $senjata.jpg": Memindahkan file ke direktori yang sesuai dengan format nama yang ditentukan.
+  
+- awk -F',' 'BEGIN {print "Jumlah penggunaan senjata oleh karakter:"} NR > 1 {senjata[$4]++} END {for (weapon in senjata) print "Senjata:", weapon, "- Jumlah:", senjata[weapon]}' 'list_character.csv': Menggunakan AWK untuk menghitung jumlah penggunaan senjata oleh karakter dalam file "list_character.csv".
+  
+- rm genshin_character.zip genshin.zip list_character.csv: Menghapus file "genshin_character.zip", "genshin.zip", dan "list_character.csv".
 
 
 ## Soal 4
