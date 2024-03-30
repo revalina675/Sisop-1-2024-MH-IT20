@@ -7,7 +7,7 @@
 | Farida Qurrotu 'Ayuna         | 5027231015 |
 | Gallant Damas Hayuaji         | 5027231037 |
 
-### Soal 1
+## Soal 1
 Cipung dan abe ingin mendirikan sebuah toko bernama “SandBox”, sedangkan kamu adalah manajer penjualan yang ditunjuk oleh Cipung dan Abe untuk melakukan pelaporan penjualan dan strategi penjualan kedepannya yang akan dilakukan.
 
 Setiap tahun Cipung dan Abe akan mengadakan rapat dengan kamu untuk mengetahui laporan dan strategi penjualan dari “SandBox”. Buatlah beberapa kesimpulan dari data penjualan “Sandbox.csv” untuk diberikan ke cipung dan abe 
@@ -153,7 +153,7 @@ grep -i "Adriaens .*" Sandbox.csv | awk -F ',' '{print "tanggal pembelian: " $2;
 ```
 Hingga akhirnya, program dapat dijalankan.
 
-### Soal 2
+## Soal 2
 
 Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lain untuk mengerjakan proyek bom atom nya, Oppie memiliki racikan bom atom rahasia yang hanya bisa diakses penelitinya yang akan diidentifikasi sebagai user, Oppie juga memiliki admin yang bertugas untuk memanajemen peneliti,  bantulah oppie untuk membuat program yang akan memudahkan tugasnya 
 
@@ -164,10 +164,14 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   c. Username yang dibuat bebas, namun email bersifat unique **setiap email yang mengandung kata admin akan dikategorikan menjadi admin** 
   
   d. Karena resep bom atom ini sangat rahasia Oppie ingin password nya memuat keamanan tingkat tinggi
-      a) Password tersebut harus di encrypt menggunakan base64
-      b) Password yang dibuat harus lebih dari 8 karakter
-      c) Harus terdapat paling sedikit 1 huruf kapital dan 1 huruf kecil
-      d) Harus terdapat paling sedikit 1 angka 
+  
+  - Password tersebut harus di encrypt menggunakan base64
+    
+  - Password yang dibuat harus lebih dari 8 karakter
+    
+  - Harus terdapat paling sedikit 1 huruf kapital dan 1 huruf kecil
+    
+  - Harus terdapat paling sedikit 1 angka 
   
   e. Karena Oppie akan memiliki banyak peneliti dan admin ia berniat untuk menyimpan seluruh data register yang ia lakukan ke dalam folder users file users.txt. Di dalam file tersebut, terdapat catatan seluruh email, username, pertanyaan keamanan dan jawaban, dan password hash yang telah ia buat.
   
@@ -181,25 +185,25 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   
   j. Oppie ingin programnya tercatat dengan baik, maka buatlah agar program bisa mencatat seluruh log ke dalam folder users file auth.log, baik login ataupun register.
   
-  a) Format: [date] [type] [message]
+  - Format: [date] [type] [message]
   
-  b) Type: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
+  - Type: REGISTER SUCCESS, REGISTER FAILED, LOGIN SUCCESS, LOGIN FAILED
   
-  c) Ex:
+  - Ex:
             
-  i. [23/09/17 13:18:02] [REGISTER SUCCESS] user [username] registered successfully
+        i. [23/09/17 13:18:02] [REGISTER SUCCESS] user [username] registered successfully
   
-  ii. [23/09/17 13:22:41] [LOGIN FAILED] ERROR Failed login attempt on user with email [email]
+        ii. [23/09/17 13:22:41] [LOGIN FAILED] ERROR Failed login attempt on user with email [email]
 
-*PENYELESAIAN*
+## ! PENYELESAIAN !
 
 ## soal 2a
 
 Pada soal ini diperintahkan untuk membuat dua program yaitu register.sh dan login.sh
 
-![Gambar Contoh](https://github.com/Faridaqurr/lapres/blob/main/9ced4635ed159aa08306a03c8575e9a5.jpg)
+![soal 2a](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/8afd2d98-5ab0-4c44-86ab-c87f5e84b554)
 
-`mkdir praktikum1` untuk membuat folder praktikum
+`mkdir praktikum` untuk membuat folder praktikum
 
 `cd praktikum` untuk pindah ke directory praktikum sebelum membuat file
 
@@ -221,7 +225,9 @@ Ketika penyelesaian soal, pada program register harus menampilkan email, usernam
     read -p "Security Answer   : " security_answer
     read -sp "Password	  : " password
     echo
-    
+
+![soal 2a (2)](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/83b2a0b5-e694-411e-be79-c494f0f5c6db)
+
 ## soal 2c
 
 Saat memasukkan data, program dibuat agar ketika terdeteksi kata "admin" pada email maka secara otomatis user tersebut akan dikategorikan sebagai admin
@@ -285,6 +291,8 @@ Setelah melakukan register, terdapat juga program untuk login yang cukup menampi
     echo "1. Login"
     echo "2. Forgot Password"
     read -p "Choose an option: " option
+
+![soal 2a (2)](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/83b2a0b5-e694-411e-be79-c494f0f5c6db)
 
 ## soal 2g
 
@@ -386,6 +394,8 @@ Jika login berhasil maka akan di tampilkan pesan sukse, namun jika terdeteksi se
 
 Ketika memilih menu admin edit dan delete user, maka akan memunculkan tampilan untuk inputan email atau username
 
+![soal 2a (3)](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/7da12a63-b1f2-495f-beb0-da2096696402)
+
     # Fungsi untuk mengedit
     edit_user() 
     {
@@ -430,10 +440,11 @@ Ketika memilih menu admin edit dan delete user, maka akan memunculkan tampilan u
 
 Seluruh data log yang diinputkan akan disimpan ke dalam auth.log baik login maupun register, dengan format [DATE][TYPE][MASSAGE]
 
-![Gambar Contoh](https://github.com/Faridaqurr/lapres/blob/main/9ced4635ed159aa08306a03c8575e9a5.jpg)
+Berikut adalah hasil outputnya:
 
+![soal 2a (4)](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/00508c79-d388-434b-8de7-046afd911ea9)
 
-### Soal 3
+## Soal 3
 Alyss adalah seorang gamer yang sangat menyukai bermain game Genshin Impact. Karena hobinya, dia ingin mengoleksi foto-foto karakter Genshin Impact. Suatu saat Yanuar memberikannya sebuah Link yang berisi koleksi kumpulan foto karakter dan sebuah clue yang mengarah ke penemuan gambar rahasia. Ternyata setiap nama file telah dienkripsi dengan menggunakan hexadecimal. Karena penasaran dengan apa yang dikatakan Yanuar, Alyss tidak menyerah dan mencoba untuk mengembalikan nama file tersebut kembali seperti semula.
 
 A. Alyss membuat script bernama awal.sh, untuk download file yang diberikan oleh Yanuar dan unzip terhadap file yang telah diunduh dan decode setiap nama file yang terenkripsi dengan hex . Karena pada file list_character.csv terdapat data lengkap karakter, Alyss ingin merename setiap file berdasarkan file tersebut. Agar semakin rapi, Alyss mengumpulkan setiap file ke dalam folder berdasarkan region tiap karakter
@@ -497,7 +508,7 @@ done
 ```
 
 
-### Soal 4
+## Soal 4
 Stitch sangat senang dengan PC di rumahnya. Suatu hari, PC nya secara tiba-tiba nge-freeze 🤯 Tentu saja, Stitch adalah seorang streamer yang harus setiap hari harus bermain game dan streaming.  Akhirnya, dia membawa PC nya ke tukang servis untuk diperbaiki. Setelah selesai diperbaiki, ternyata biaya perbaikan sangat mahal sehingga dia harus menggunakan uang hasil tabungan nya untuk membayarnya. Menurut tukang servis, masalahnya adalah pada CPU dan GPU yang overload karena gaming dan streaming sehingga mengakibatkan freeze pada PC nya. Agar masalah ini tidak terulang kembali, Stitch meminta kamu untuk membuat sebuah program monitoring resource yang tersedia pada komputer.
 
 Buatlah program monitoring resource pada PC kalian. Cukup monitoring ram dan monitoring size suatu directory. Untuk ram gunakan command `free -m`. Untuk disk gunakan command `du -sh <target_path>`. Catat semua metrics yang didapatkan dari hasil `free -m`. Untuk hasil `du -sh <target_path>` catat size dari path directory tersebut. Untuk target_path yang akan dimonitor adalah /home/{user}/. 
