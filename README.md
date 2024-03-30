@@ -7,12 +7,6 @@
 | Farida Qurrotu 'Ayuna         | 5027231015 |
 | Gallant Damas Hayuaji         | 5027231037 |
 
-Daftar Soal
-- [Soal 1](#soal1)
-- [Soal 2](#soal2)
-- [Soal 3](#soal3)
-- [Soal 4](#soal4)
-
 ### Soal 1
 Cipung dan abe ingin mendirikan sebuah toko bernama “SandBox”, sedangkan kamu adalah manajer penjualan yang ditunjuk oleh Cipung dan Abe untuk melakukan pelaporan penjualan dan strategi penjualan kedepannya yang akan dilakukan.
 
@@ -30,18 +24,134 @@ d. Karena ada seseorang yang lapor kepada Cipung dan Abe bahwa pesanannya tidak 
 
 - Buat sebuah folder dengan command berikut :
 
-*disini saya membuat folder dengan nama SandBox*
+*disini saya membuat folder dengan nama sandbox*
 
 ```bash
-mkdir SandBox
+mkdir sandbox
 ```
 
 `mkdir` command untuk membuat directory
 
-`SandBox` nama directory yang ingin dibuat
+`sandbox` nama directory yang ingin dibuat
 
 - Masuk ke dalam folder SandBox
+```bash
+cd sandbox
+```
 
+`cd` command untuk masuk ke dalam suatu directory
+
+- menginstall file yang diminta oleh soal
+```bash
+wget -O Sandbox.csv 'https://drive.google.com/uc?download=export&id=1cC6MYBI3wRwDgqlFQE1OQUN83JAreId0'
+```
+
+- Mengubah file menjadi executable
+```bash
+chmod +x Sandbox.csv
+```
+
+- mengecek apakah file benar-benar sudah terdownload dan aktif
+```bash
+ls -l Sandbox.csv
+```
+
+-->gambar 1
+
+- buat konfigurasi sandbox.sh sesuai yang diminta soal
+```bash
+nano sandbox.sh
+```
+
+- Masukkan konfigurasi untuk tiap sub soal yang ada
+```bash
+#subsoal a mencari sales paling tinggi beserta memunculkan nama pembeli
+awk -F ',' 'NR>1{if(max=="") { max=$17; cust=$6; } else if($17>max) { max=$17; cust=$6; }} END{print cust}' Sandbox.csv
+
+#subsoal b menampilkan pelanggan dengan segment yang memiliki profit paling kecil
+awk -F ',' 'NR>1{if(min=="") { min=$20; segment=$7; } else if($20<min) { min=$20; segment=$7; }} END{print segment}' Sandbox.csv 
+
+#subsoal c menampilkan 3 kategori dengan penghasilan total profit paling tinggi
+awk -F ',' 'NR > 1 {profit[$14] += $20} END {for (category in profit) print category}' Sandbox.csv | sort -k2 -nr | head -n3
+
+#subsoal d
+grep -i "Adriaens .*" Sandbox.csv | awk -F ',' '{print "tanggal pembelian: " $2; print "banyak: " $18}'
+```
+
+**penjelasan subsoal a**
+
+`awk -F ','` command yang digunakan untuk membaca baris dan memisah tiap bagian yang ada pada abris dengan ','
+
+`NR>1` command yang digunakan untuk mengeksekusi tiap baris setelah header
+
+`if(max=="") { max=$17; cust=$6; }` fungsi yang digunakan untuk menginisiasi nilai maksimal ada pada baris pertama kolom 17, dan letak nama pembeli ada pada baris pertama kolom 6
+
+`else if($17>max) { max=$17; cust=$6; }` fungsi yang digunakan untuk mengganti nilai maksimal hingga tidak ada nilai yang lebih besar lagi diatasnya
+
+`END{print cust}'` output yang akan ditampilkan adalah nama pembeli/customer
+
+**penjelasan subsoal b**
+
+`awk -F ','` command yang digunakan untuk membaca baris dan memisah tiap bagian yang ada pada abris dengan ','
+
+`NR>1` command yang digunakan untuk mengeksekusi tiap baris setelah header
+
+`if(min=="") { min=$20; segment=$7; }` fungsi yang digunakan untuk menginisiasi nilai mainimal ada pada baris pertama kolom 20, dan letak nama pembeli ada pada baris pertama kolom 7
+
+`else if($20<min) { min=$20; segment=$7; }}` fungsi yang digunakan untuk mengganti nilai minimum hingga tidak ada nilai yang lebih kecil lagi dibawahnya
+
+`END{print segment}'` output yang akan ditampilkan adalah nama segment
+
+**penjelasan subsoal c**
+
+`awk -F ','` command yang digunakan untuk membaca baris dan memisah tiap bagian yang ada pada abris dengan ','
+
+`NR>1` command yang digunakan untuk mengeksekusi tiap baris setelah header
+
+`{profit[$14] += $20}` fungsi yang digunakan untuk menginisiasi nilai profit paling tinggi, serta menunjukkan bahwa section kategori ada pada kolom 14 dan profit pada kolom 20
+
+`ND {for (category in profit) print category}'` output yang akan ditampilkan adalah 3 nama kategori yang memiliki profil paling tinggi
+
+`| sort -k2 -nr` total profit akan diurutkan secara descending
+
+`| head -n3` hasil pengurutan akan diambil 3 baris pertama yang merupakan profil tertinggi
+
+**penjelasan subsoal d**
+
+`grep -i "Adriaens ." Sandbox.csv` mencari baris-baris dalam file Sandbox.sh yang mengandung kata Adriaens
+
+`| awk -F ',' '{print "tanggal pembelian: " $2; print "banyak: " $18}` command yang menunjukkan bahwa kolom tanggal pembelian/purchase date milik Adriaens akan dicari pada kolom 2, sedangkan untuk banyak/quantity akan dicari pada kolom 18
+
+--> gambar 2
+
+- Mengubah konfigurasi agar menjadi executable
+```bash
+chmod +x sandbox.csv
+```
+
+- Menjalankan file scirpt bash
+```bash
+./sandbox.sh
+```
+
+- hasil output
+  
+--> gambar 3
+
+*revisi*
+Pada code awal saya menggunakan 
+```bash
+grep -i "Adriaens .*" Sandbox.csv 
+awk -F ',' '{print "purchase date: " $2}'
+
+grep -i "Adriaens .*" Sandbox.csv
+awk -F ',' '{print "quantity: " $18}'
+```
+Namun, code ini tidak bisa berjalan. Akhirnya saya mencoba menggunakan code baru yang tidak terpisah seperti code awal, menjadi
+```bash
+grep -i "Adriaens .*" Sandbox.csv | awk -F ',' '{print "tanggal pembelian: " $2; print "banyak: " $18}'
+```
+Hingga akhirnya, program dapat dijalankan.
 
 ### Soal 2
 
