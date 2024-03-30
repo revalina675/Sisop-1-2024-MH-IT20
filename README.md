@@ -20,7 +20,7 @@ c. Cipung dan Abe hanya akan membeli stok barang yang menghasilkan profit paling
 
 d. Karena ada seseorang yang lapor kepada Cipung dan Abe bahwa pesanannya tidak kunjung sampai, maka mereka ingin mengecek apakah pesanan itu ada. Cari purchase date dan amount (quantity) dari nama adriaens
 
-*penyelesaian*
+## ! PENYELESAIAN !
 
 - Buat sebuah folder dengan command berikut :
 
@@ -470,7 +470,7 @@ E. Hasil akhir:
           - [filename].txt
           - [image].jpg
 
-_Penyelesaian_
+## ! PENYELESAIAN !
 
 - Buat suatu directory
 _disini saya menggunakan directory genshin_
@@ -532,7 +532,8 @@ Note:
 -	Semua file log terletak di /home/{user}/log
 -	Semua konfigurasi cron dapat ditaruh di file skrip .sh nya masing-masing dalam bentuk comment
 
-_Penyelesaian_
+## ! PENYELESAIAN !
+
 1. Pertama saya membuat skrip untuk memantau penggunaan RAM
    
    `nano monitor_ram.sh`
