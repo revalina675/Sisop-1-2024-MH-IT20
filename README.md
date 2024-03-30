@@ -20,7 +20,7 @@ c. Cipung dan Abe hanya akan membeli stok barang yang menghasilkan profit paling
 
 d. Karena ada seseorang yang lapor kepada Cipung dan Abe bahwa pesanannya tidak kunjung sampai, maka mereka ingin mengecek apakah pesanan itu ada. Cari purchase date dan amount (quantity) dari nama adriaens
 
-## ! PENYELESAIAN !
+### ! PENYELESAIAN !
 
 - Buat sebuah folder dengan command berikut :
 
@@ -195,7 +195,7 @@ Oppie merupakan seorang peneliti bom atom, ia ingin merekrut banyak peneliti lai
   
         ii. [23/09/17 13:22:41] [LOGIN FAILED] ERROR Failed login attempt on user with email [email]
 
-## ! PENYELESAIAN !
+### ! PENYELESAIAN !
 
 ## soal 2a
 
@@ -470,7 +470,7 @@ E. Hasil akhir:
           - [filename].txt
           - [image].jpg
 
-## ! PENYELESAIAN !
+### ! PENYELESAIAN !
 
 - Buat suatu directory
 _disini saya menggunakan directory genshin_
@@ -532,7 +532,7 @@ Note:
 -	Semua file log terletak di /home/{user}/log
 -	Semua konfigurasi cron dapat ditaruh di file skrip .sh nya masing-masing dalam bentuk comment
 
-## ! PENYELESAIAN !
+### ! PENYELESAIAN !
 
 1. Pertama saya membuat skrip untuk memantau penggunaan RAM
    
