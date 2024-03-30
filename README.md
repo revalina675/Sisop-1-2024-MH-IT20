@@ -275,3 +275,87 @@ Note:
 -	Nama file untuk script agregasi per jam adalah aggregate_minutes_to_hourly_log.sh
 -	Semua file log terletak di /home/{user}/log
 -	Semua konfigurasi cron dapat ditaruh di file skrip .sh nya masing-masing dalam bentuk comment
+
+Penyelesaian
+1. Pertama saya membuat skrip untuk memantau penggunaan RAM
+   `nano monitor_ram.sh`
+   Lalu mengedit skrip tersebut seperti di bawah ini
+   #!/bin/bash
+`
+#membuat command untuk pantau RAM usage
+RAM_INFO=$(free -m)
+
+# informasi RAM akan disimpan dalam file log
+LOG_FILE="metrics_$(date +"%Y%m%d%H%M%S").log"
+echo "$(date +"%Y-%m-%d %H:%M:%S") RAM Usage:
+$RAM_INFO" >> ~/$LOG_FILE
+`
+Setelah membuat skrip, saya mengubah hak aksesnya
+`chmod +x monitor_ram.sh`
+
+2. Selanjutnya saya membuat skrip memantau ukuran directory
+   `nano monitor_directory.sh`
+   Isi dari skrip tersebut adalah sebagai berikut
+   `
+   #!/bin/bash
+
+# Path direktori untuk dilakukan monitor
+TARGET_PATH="/home/$(whoami)/"
+
+# command untuk mengecek ukuran directory target
+DIRECTORY_SIZE=$(du -sh "$TARGET_PATH")
+
+# Save informasi ukuran directory dalam file log sesuai format yang ada
+LOG_FILE="metrics_$(date +"%Y%m%d%H%M%S").log"
+echo "$(date +"%Y-%m-%d %H:%M:%S") Directory Size - $TARGET_PATH:
+$DIRECTORY_SIZE" >> ~/$LOG_FILE
+`
+Setelah skrip dibuat, saya mengubah hak aksesnya
+chmod +x monitor_directory.sh
+
+Agar metrics dapat dicatat dan berjalan otomatis tiap menit, saya menggunakan crontab
+`crontab -e`
+Lalu memasukkan code berikut pada bagian paling bawah dari crontab
+`* * * * * /home/gallant/monitor_ram.sh`
+`* * * * * /home/gallant/monitor_directory.sh`
+
+Pada soal 4c, diperlukan skrip untuk agregasi file log ke satuan jam
+`nano aggregate_logs.sh`
+
+`
+#!/bin/bash
+# Waktu saat ini diubah dalam bentuk YmdH
+CURRENT_TIME=$(date +"%Y%m%d%H")
+# Path menuju directory log
+LOG_DIR="/home/$(whoami)/"
+
+# semua file log permenit akan digabungkan
+cat "${LOG_DIR}metrics_"*.log > "${LOG_DIR}merged_logs.txt"
+
+# Create file agregasi sesuai format
+AGGREGATE_LOG="${LOG_DIR}metrics_agg_${CURRENT_TIME}.log"
+
+# hitung nilai max, min, dan average pada metrics
+MIN_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $3}' | sort -n | head -n1)
+MAX_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $3}' | sort -n | tail -n1)
+AVG_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{sum+=$3} END {print sum/NR}')
+
+MIN_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $5}' | sort -n | head -n1)
+MAX_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $5}' | sort -n | tail -n1)
+AVG_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{sum+=$5} END {print sum/NR}')
+
+# Hasil di save dalam bentuk log
+echo "Minimum RAM Usage: $MIN_RAM" >> "$AGGREGATE_LOG"
+echo "Maximum RAM Usage: $MAX_RAM" >> "$AGGREGATE_LOG"
+echo "Average RAM Usage: $AVG_RAM" >> "$AGGREGATE_LOG"
+echo "Minimum Directory Size: $MIN_DIRECTORY" >> "$AGGREGATE_LOG"
+echo "Maximum Directory Size: $MAX_DIRECTORY" >> "$AGGREGATE_LOG"
+echo "Average Directory Size: $AVG_DIRECTORY" >> "$AGGREGATE_LOG"
+`
+
+Setelah skrip dibuat, perlu dilakukan perubahan hak akses dan perubahan pada file crontab
+`chmod +x aggregate_logs.sh`
+`0 * * * * /home/gallant/aggregate_logs.sh`
+
+Agar file log tersebut hanya dapat dibaca oleh pemiliknya, maka saya akan mengubah hak aksesnya sebagai berikut
+`chmod 600 /home/$(whoami)/*.log`
