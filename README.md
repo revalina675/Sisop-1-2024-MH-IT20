@@ -216,6 +216,40 @@ E. Hasil akhir:
 
 _Penyelesaian_
 
+- Buat suatu directory
+_disini saya menggunakan directory genshin_
+```bash
+mkdir genshin
+```
+
+- Masuk ke dalam directory tersebut
+```bash
+cd genshin
+```
+
+- download file yang diperintahkan soal
+```bash
+wget -O genshin.zip 'https://drive.google.com/uc?download=export&id=1oGHdTf4_76_RacfmQIV4i7os4sGwa9vN'
+```
+
+- unzip file yang masih dalam mode .zip
+```bash
+unzip genshin.zip
+unzip genshin_character.zip
+```
+
+- masuk ke dalam genshin_character
+```bash
+cd genshin_character
+```
+
+- decrypted file
+```bash
+for encrypted_file in *.jpg; do
+    decrypted_filename=$(echo "$encrypted_file" | xxd -r -p)
+    mv "$encrypted_file" "$decrypted_filename"
+done
+```
 
 
 ### Soal 4
