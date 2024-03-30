@@ -611,3 +611,5 @@ Setelah skrip dibuat, perlu dilakukan perubahan hak akses dan perubahan pada fil
 
 Agar file log tersebut hanya dapat dibaca oleh pemiliknya, maka saya akan mengubah hak aksesnya sebagai berikut
 `chmod 600 /home/$(whoami)/*.log`
+
+![Alt text](https://drive.google.com/file/d/1dW_puemk-KgYcKtbJok1TXaToFWDhBwO/view?usp=sharing)
