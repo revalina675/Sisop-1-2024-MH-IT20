@@ -56,7 +56,7 @@ chmod +x Sandbox.csv
 ls -l Sandbox.csv
 ```
 
--->gambar 1
+![Gambar Contoh](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/7611c6c2-2cf0-4469-b1af-47dd6f9f6516)
 
 - buat konfigurasi sandbox.sh sesuai yang diminta soal
 ```bash
