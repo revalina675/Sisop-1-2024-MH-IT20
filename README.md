@@ -548,8 +548,10 @@ Setelah membuat skrip, saya mengubah hak aksesnya
    #!/bin/bash
 # Path direktori untuk dilakukan monitor
 TARGET_PATH="/home/$(whoami)/"
+
 # command untuk mengecek ukuran directory target
 DIRECTORY_SIZE=$(du -sh "$TARGET_PATH")
+
 # Save informasi ukuran directory dalam file log sesuai format yang ada
 LOG_FILE="metrics_$(date +"%Y%m%d%H%M%S").log"
 echo "$(date +"%Y-%m-%d %H:%M:%S") Directory Size - $TARGET_PATH:
@@ -575,12 +577,14 @@ Pada soal 4c, diperlukan skrip untuk agregasi file log ke satuan jam
 #!/bin/bash
 # Waktu saat ini diubah dalam bentuk YmdH
 CURRENT_TIME=$(date +"%Y%m%d%H")
-# Path menuju directory log
+
+# Path untuk menuju directory log
 LOG_DIR="/home/$(whoami)/"
 # semua file log permenit akan digabungkan
 cat "${LOG_DIR}metrics_"*.log > "${LOG_DIR}merged_logs.txt"
 # Create file agregasi sesuai format
 AGGREGATE_LOG="${LOG_DIR}metrics_agg_${CURRENT_TIME}.log"
+
 # hitung nilai max, min, dan average pada metrics
 MIN_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $3}' | sort -n | head -n1)
 MAX_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $3}' | sort -n | tail -n1)
@@ -588,6 +592,7 @@ AVG_RAM=$(awk '/RAM Usage/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{
 MIN_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $5}' | sort -n | head -n1)
 MAX_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{print $5}' | sort -n | tail -n1)
 AVG_DIRECTORY=$(awk '/Directory Size/{getline; print}' "${LOG_DIR}merged_logs.txt" | awk '{sum+=$5} END {print sum/NR}')
+
 # Hasil di save dalam bentuk log
 echo "Minimum RAM Usage: $MIN_RAM" >> "$AGGREGATE_LOG"
 echo "Maximum RAM Usage: $MAX_RAM" >> "$AGGREGATE_LOG"
