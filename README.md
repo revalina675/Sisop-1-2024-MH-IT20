@@ -622,9 +622,16 @@ Setelah skrip dibuat, perlu dilakukan perubahan hak akses dan perubahan pada fil
 
 Agar file log tersebut hanya dapat dibaca oleh pemiliknya, maka saya akan mengubah hak aksesnya sebagai berikut
 `chmod 600 /home/$(whoami)/*.log`
+chmod: merupakan command untuk ubah izin
+angka 6 menunjukkan bahwa izin diberikan hanya untuk pemilik file
+angka 00 di belakangnya adalah grup user lainnya yang tidak bisa mengakses file
 
+Berikut ini adalah output yang saya dapatkan dari pengerjaan soal nomor 4.
+Gambar pertama adalah file metrics
 ![Gambar 1](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/f948c46e-36c5-437f-9b3a-7d65378ff02c)
 
+Gambar kedua adalah monitoring penggunaan RAM (RAM Usage)
 ![Gambar 2](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/b06bab54-a181-424d-80f6-610a75933a5c)
 
+Gambar ketiga adalah monitoring directory
 ![Gambar 3](https://github.com/revalina675/Sisop-1-2024-MH-IT20/assets/150933246/8dc0e4ab-ad1a-4e84-81b8-eb550dd35d01)
